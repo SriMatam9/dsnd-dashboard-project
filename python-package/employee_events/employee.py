@@ -33,7 +33,7 @@ class Employee(QueryBase)
                 {self.name}_id AS id
             FROM {self.name}
         """
-        return execute(sql)
+        return self.query(sql)
 
     
 
@@ -56,7 +56,7 @@ class Employee(QueryBase)
             FROM {self.name}
             WHERE {self.name}_id = {id}
         """
-        return execute(sql)
+        return self.query(sql)
 
 
 
@@ -78,3 +78,4 @@ class Employee(QueryBase)
                         USING({self.name}_id)
                     WHERE {self.name}.{self.name}_id = {id}
                 """
+        return self.pandas_query(sql)
