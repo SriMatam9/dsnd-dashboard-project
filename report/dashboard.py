@@ -61,7 +61,7 @@ Class Header(BaseComponent):
         # Using the model argument for this method
         # return a fasthtml H1 objects
         # containing the model's name attribute
-        return H!(getattr(model,'name', ''))
+        return H1(getattr(model,'name', ''))
           
 
 # Create a subclass of base_components/MatplotlibViz
@@ -131,30 +131,30 @@ class LineChart(MatplotlibViz):
 
 # Create a subclass of base_components/MatplotlibViz
 # called `BarChart`
-#### YOUR CODE HERE
+class BarChart(MatplotlibViz):
 
     # Create a `predictor` class attribute
     # assign the attribute to the output
     # of the `load_model` utils function
-    #### YOUR CODE HERE
+    predictor = load_model()
 
     # Overwrite the parent class `visualization` method
     # Use the same parameters as the parent
-    #### YOUR CODE HERE
+    def visualization(self,r, model:QueryBase, asset_id=None,**kwargs):
 
         # Using the model and asset_id arguments
         # pass the `asset_id` to the `.model_data` method
         # to receive the data that can be passed to the machine
         # learning model
-        #### YOUR CODE HERE
+        X = model.model_data(asset_id= asset_id)
         
         # Using the predictor class attribute
         # pass the data to the `predict_proba` method
-        #### YOUR CODE HERE
+        proba = self.predictor.predict_prob(X)
         
         # Index the second column of predict_proba output
         # The shape should be (<number of records>, 1)
-        #### YOUR CODE HERE
+        ps_proba = proba[:,1]
         
         
         # Below, create a `pred` variable set to
@@ -162,14 +162,16 @@ class LineChart(MatplotlibViz):
         #
         # If the model's name attribute is "team"
         # We want to visualize the mean of the predict_proba output
-        #### YOUR CODE HERE
+        if getattr(model, 'name', '').lowe() == 'team':
+            pred = float(ps_proba.mean())
+        else:
             
         # Otherwise set `pred` to the first value
         # of the predict_proba output
-        #### YOUR CODE HERE
+            pred = float(ps_proba[0])
         
         # Initialize a matplotlib subplot
-        #### YOUR CODE HERE
+        fig,ax = plt.subplots()
         
         # Run the following code unchanged
         ax.barh([''], [pred])
