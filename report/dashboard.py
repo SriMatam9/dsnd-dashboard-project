@@ -181,33 +181,34 @@ class BarChart(MatplotlibViz):
         # pass the axis variable
         # to the `.set_axis_styling`
         # method
-        #### YOUR CODE HERE
+        self.set_axis_styling(ax)
+        return fig
  
 # Create a subclass of combined_components/CombinedComponent
 # called Visualizations       
-#### YOUR CODE HERE
+class Visualizations(CombinedComponent):
 
     # Set the `children`
     # class attribute to a list
     # containing an initialized
     # instance of `LineChart` and `BarChart`
-    #### YOUR CODE HERE
+    children = [ LineChart(), BarChart() ]
 
     # Leave this line unchanged
     outer_div_type = Div(cls='grid')
             
 # Create a subclass of base_components/DataTable
 # called `NotesTable`
-#### YOUR CODE HERE
+class NotesTable(DataTable):
 
     # Overwrite the `component_data` method
     # using the same parameters as the parent class
-    #### YOUR CODE HERE
+    def component_data(self, r , model = QueryBase, entity_id = None, **kwargs):
         
         # Using the model and entity_id arguments
         # pass the entity_id to the model's .notes 
         # method. Return the output
-        #### YOUR CODE HERE
+        return model.notes(entity_id)
     
 
 class DashboardFilters(FormGroup):
@@ -230,31 +231,32 @@ class DashboardFilters(FormGroup):
     
 # Create a subclass of CombinedComponents
 # called `Report`
-#### YOUR CODE HERE
+class Report(CombinedComponents):
 
     # Set the `children`
     # class attribute to a list
     # containing initialized instances 
     # of the header, dashboard filters,
     # data visualizations, and notes table
-    #### YOUR CODE HERE
+    children = [ Header(), DashboardFilters(), Visualizations(), NotesTable() ]
 
 # Initialize a fasthtml app 
-#### YOUR CODE HERE
+app, rt  = fast_app()
 
 # Initialize the `Report` class
-#### YOUR CODE HERE
+report = Report()
 
 
 # Create a route for a get request
 # Set the route's path to the root
-#### YOUR CODE HERE
+@app.get('/')
+def root():
 
     # Call the initialized report
     # pass the integer 1 and an instance
     # of the Employee class as arguments
     # Return the result
-    #### YOUR CODE HERE
+    return Report(1, Employee())
 
 # Create a route for a get request
 # Set the route's path to receive a request
@@ -263,13 +265,14 @@ class DashboardFilters(FormGroup):
 # an ID of `2`. 
 # parameterize the employee ID 
 # to a string datatype
-#### YOUR CODE HERE
+@app.get('/employee/{id : str}')
+def employee_page(id : str):
 
     # Call the initialized report
     # pass the ID and an instance
     # of the Employee SQL class as arguments
     # Return the result
-    #### YOUR CODE HERE
+    return report(id, Employee())
 
 # Create a route for a get request
 # Set the route's path to receive a request
@@ -278,13 +281,14 @@ class DashboardFilters(FormGroup):
 # an ID of `2`. 
 # parameterize the team ID 
 # to a string datatype
-#### YOUR CODE HERE
+@app.get('/team/{id : str}')
+def team_page(id : str):
 
     # Call the initialized report
     # pass the id and an instance
     # of the Team SQL class as arguments
     # Return the result
-    #### YOUR CODE HERE
+    return report(id, Team())
 
 
 # Keep the below code unchanged!
