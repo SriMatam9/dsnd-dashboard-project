@@ -41,7 +41,7 @@ class ReportDropdown(Dropdown):
     # Overwrite the `component_data` method
     # Ensure the method uses the same parameters
     # as the parent class method
-    def component_data(self, r, model: QueryBase, **KWargs)
+    def component_data(self, r, model: QueryBase, **KWargs):
         # Using the model argument
         # call the employee_events method
         # that returns the user-type's
