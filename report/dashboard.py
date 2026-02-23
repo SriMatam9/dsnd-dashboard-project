@@ -84,7 +84,7 @@ class LineChart(MatplotlibViz):
         # User the pandas .set_index method to set
         # the date column as the index
         if 'date' in df.columns:
-            df = df.set_index('date)
+            df = df.set_index('date')
         elif 'Day' in df.columns:
             df = df.set_index(Day)
         else:
