@@ -2,7 +2,7 @@ from fasthtml.common import *
 import matplotlib.pyplot as plt
 import pandas as pd
 # Import QueryBase, Employee, Team from employee_events
-import employee_events impott QueryBase, Employee,Team
+import employee_events import QueryBase, Employee,Team
 
 # import the load_model function from the utils.py file
 from utils import load_model
