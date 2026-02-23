@@ -51,7 +51,7 @@ class ReportDropdown(Dropdown):
 
 # Create a subclass of base_components/BaseComponent
 # called `Header`
-Class Header(BaseComponent):
+class Header(BaseComponent):
 
     # Overwrite the `build_component` method
     # Ensure the method has the same parameters
