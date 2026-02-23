@@ -1,4 +1,4 @@
-from fasthtml.common import *
+from fasthtml.common import * 
 import matplotlib.pyplot as plt
 import pandas as pd
 # Import QueryBase, Employee, Team from employee_events
