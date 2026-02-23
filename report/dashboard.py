@@ -32,7 +32,7 @@ class ReportDropdown(Dropdown):
     def build_component(self,r,model: QueryBase, **kwargs):
         #  Set the `label` attribute so it is set
         #  to the `name` attribute for the model
-        self.label = getattr(model, 'name','')/
+        self.label = getattr(model, 'name','')
         
         # Return the output from the
         # parent class's build_component method
