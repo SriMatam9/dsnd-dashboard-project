@@ -79,3 +79,4 @@ class Employee(QueryBase)
                     WHERE {self.name}.{self.name}_id = {id}
                 """
         return self.pandas_query(sql)
+        return self.pandas_query(sql)
