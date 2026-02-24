@@ -29,19 +29,19 @@ class ReportDropdown(Dropdown):
     # Overwrite the build_component method
     # ensuring it has the same parameters
     # as the Report parent class's method
-    def build_component(self,r,model: QueryBase, **kwargs):
+    def build_component(self,entity_id, model:QueryBase,**kwargs):
         #  Set the `label` attribute so it is set
         #  to the `name` attribute for the model
         self.label = getattr(model, 'name','')
         
         # Return the output from the
         # parent class's build_component method
-        return super().build_component(r, model, **kwargs)
+        return super().build_component(entity_id, model, **kwargs)
     
     # Overwrite the `component_data` method
     # Ensure the method uses the same parameters
     # as the parent class method
-    def component_data(self, r, model: QueryBase, **kwargs):
+    def component_data(self,entity_id, model:QueryBase,**kwargs):
         # Using the model argument
         # call the employee_events method
         # that returns the user-type's
@@ -56,7 +56,7 @@ class Header(BaseComponent):
     # Overwrite the `build_component` method
     # Ensure the method has the same parameters
     # as the parent class
-    def build_component(self,r, model: QueryBase, **kwargs):
+    def build_component(self,entity_id, model:QueryBase,**kwargs):
         
         # Using the model argument for this method
         # return a fasthtml H1 objects
@@ -70,8 +70,8 @@ class LineChart(MatplotlibViz):
     
     # Overwrite the parent class's `visualization`
     # method. Use the same parameters as the parent
-    def visualization(self,r,model:QueryBase,asset_id = None,id = None,entity_id = None,**kwargs):
-    
+    def visualization(self,entity_id, model:QueryBase,**kwargs):
+        asset_id = entity_id    
 
         # Pass the `asset_id` argument to
         # the model's `event_counts` method to
@@ -140,7 +140,8 @@ class BarChart(MatplotlibViz):
 
     # Overwrite the parent class `visualization` method
     # Use the same parameters as the parent
-    def visualization(self,r, model:QueryBase, asset_id=None,id = None,entity_id = None,**kwargs):
+    def visualization(self,entity_id, model:QueryBase,**kwargs):
+        asset_id = entity_id   
 
         # Using the model and asset_id arguments
         # pass the `asset_id` to the `.model_data` method
@@ -203,7 +204,7 @@ class NotesTable(DataTable):
 
     # Overwrite the `component_data` method
     # using the same parameters as the parent class
-    def component_data(self, r , model = QueryBase, asset_id = None,id = None,entity_id = None, **kwargs):
+    def component_data(self,entity_id, model:QueryBase, **kwargs):
         
         # Using the model and entity_id arguments
         # pass the entity_id to the model's .notes 
