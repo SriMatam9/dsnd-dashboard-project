@@ -76,7 +76,7 @@ class LineChart(MatplotlibViz):
         # Pass the `asset_id` argument to
         # the model's `event_counts` method to
         # receive the x (Day) and y (event count)
-        df = model.event_counts(asset_id =asset_id)
+        df = model.event_counts(id =asset_id)
         
         # Use the pandas .fillna method to fill nulls with 0
         df = df.fillna(0)
@@ -146,7 +146,7 @@ class BarChart(MatplotlibViz):
         # pass the `asset_id` to the `.model_data` method
         # to receive the data that can be passed to the machine
         # learning model
-        X = model.model_data(asset_id= asset_id)
+        X = model.model_data(id= asset_id)
         
         # Using the predictor class attribute
         # pass the data to the `predict_proba` method
