@@ -70,7 +70,7 @@ class LineChart(MatplotlibViz):
     
     # Overwrite the parent class's `visualization`
     # method. Use the same parameters as the parent
-    def visualization(self,r,model:QueryBase,asset_id = None,**kwargs):
+    def visualization(self,r,model:QueryBase,asset_id = None,id = None,entity_id = None,**kwargs):
     
 
         # Pass the `asset_id` argument to
@@ -140,7 +140,7 @@ class BarChart(MatplotlibViz):
 
     # Overwrite the parent class `visualization` method
     # Use the same parameters as the parent
-    def visualization(self,r, model:QueryBase, asset_id=None,**kwargs):
+    def visualization(self,r, model:QueryBase, asset_id=None,id = None,entity_id = None,**kwargs):
 
         # Using the model and asset_id arguments
         # pass the `asset_id` to the `.model_data` method
@@ -203,7 +203,7 @@ class NotesTable(DataTable):
 
     # Overwrite the `component_data` method
     # using the same parameters as the parent class
-    def component_data(self, r , model = QueryBase, entity_id = None, **kwargs):
+    def component_data(self, r , model = QueryBase, asset_id = None,id = None,entity_id = None, **kwargs):
         
         # Using the model and entity_id arguments
         # pass the entity_id to the model's .notes 
