@@ -46,7 +46,7 @@ class ReportDropdown(Dropdown):
         # call the employee_events method
         # that returns the user-type's
         # names and ids
-        return model.names_and_ids()
+        return model.names()
 
 
 # Create a subclass of base_components/BaseComponent
