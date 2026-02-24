@@ -25,7 +25,7 @@ class QueryMixin:
     # and returns the query's result as
     # a list of tuples. (You will need
     # to use an sqlite3 cursor)
-    def query(self,sql:str)->list:
+    def query(self,sql:str) -> list:
         with connect(db_path) as conn:
             cur = conn.cursor()
             return cur.execute(sql).fetchall()    
