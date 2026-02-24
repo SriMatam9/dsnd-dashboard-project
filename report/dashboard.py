@@ -36,12 +36,12 @@ class ReportDropdown(Dropdown):
         
         # Return the output from the
         # parent class's build_component method
-        return super().build_component(r, model, **KWargs)
+        return super().build_component(r, model, **kwargs)
     
     # Overwrite the `component_data` method
     # Ensure the method uses the same parameters
     # as the parent class method
-    def component_data(self, r, model: QueryBase, **KWargs):
+    def component_data(self, r, model: QueryBase, **kwargs):
         # Using the model argument
         # call the employee_events method
         # that returns the user-type's
@@ -56,7 +56,7 @@ class Header(BaseComponent):
     # Overwrite the `build_component` method
     # Ensure the method has the same parameters
     # as the parent class
-    def build_component(self,r, model: QyeryBase, **kwargs):
+    def build_component(self,r, model: QueryBase, **kwargs):
         
         # Using the model argument for this method
         # return a fasthtml H1 objects
@@ -86,7 +86,7 @@ class LineChart(MatplotlibViz):
         if 'date' in df.columns:
             df = df.set_index('date')
         elif 'Day' in df.columns:
-            df = df.set_index(Day)
+            df = df.set_index('Day')
         else:
             df = df.set_index(df.columns[0])
             
@@ -122,7 +122,7 @@ class LineChart(MatplotlibViz):
         # to inspect the supported keyword arguments
                 
         # Set title and labels for x and y axis
-        self.setaxis_styling(ax, border_color ='black', fontsize =16)
+        self.set_axis_styling(ax, border_color ='black', fontsize =16)
         ax.set_xlabel('Date')
         ax.set_ylabel('Event Count')
 
@@ -150,7 +150,7 @@ class BarChart(MatplotlibViz):
         
         # Using the predictor class attribute
         # pass the data to the `predict_proba` method
-        proba = self.predictor.predict_prob(X)
+        proba = self.predictor.predict_proba(X)
         
         # Index the second column of predict_proba output
         # The shape should be (<number of records>, 1)
@@ -162,7 +162,7 @@ class BarChart(MatplotlibViz):
         #
         # If the model's name attribute is "team"
         # We want to visualize the mean of the predict_proba output
-        if getattr(model, 'name', '').lowe() == 'team':
+        if getattr(model, 'name', '').lower() == 'team':
             pred = float(ps_proba.mean())
         else:
             
@@ -231,7 +231,7 @@ class DashboardFilters(FormGroup):
     
 # Create a subclass of CombinedComponents
 # called `Report`
-class Report(CombinedComponents):
+class Report(CombinedComponent):
 
     # Set the `children`
     # class attribute to a list
