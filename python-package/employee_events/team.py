@@ -1,5 +1,5 @@
 # Import the QueryBase class
-from employee_events import QueryBase
+from .query_base import QueryBase
 
 # Import dependencies for sql execution
 import sqlite3
