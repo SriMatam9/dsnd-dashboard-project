@@ -60,7 +60,7 @@ class QueryBase(QueryMixin):
                 n.note
             FROM {self.name} e
             JOIN notes n
-              ON e.{self.name}_id = n..{self.name}_id 
+              ON e.{self.name}_id = n.{self.name}_id 
             WHERE e.{self.name}_id = {id}
             ORDER BY n.note_date
         """
