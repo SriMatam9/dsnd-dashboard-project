@@ -74,4 +74,4 @@ class Team(QueryBase):
                     GROUP BY employee_id
                    )
           """
-          return self.pandas_query(sql)
+        return self.pandas_query(sql)
