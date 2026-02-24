@@ -7,7 +7,7 @@ from sql_execution import execution
 
 # Define a subclass of QueryBase
 # called Employee
-class Employee(QueryBase)
+class Employee(QueryBase):
 
     # Set the class attribute `name`
     # to the string "employee"
