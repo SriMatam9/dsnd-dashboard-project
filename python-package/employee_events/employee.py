@@ -3,7 +3,7 @@ from .query_base import QueryBase
 
 # Import dependencies needed for sql execution
 # from the `sql_execution` module
-from .sql_execution import execution
+from .sql_execution import QueryMixin
 
 # Define a subclass of QueryBase
 # called Employee
@@ -79,4 +79,4 @@ class Employee(QueryBase):
                     WHERE {self.name}.{self.name}_id = {id}
                 """
         return self.pandas_query(sql)
-        return self.pandas_query(sql)
+        
