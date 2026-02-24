@@ -256,7 +256,7 @@ def root():
     # pass the integer 1 and an instance
     # of the Employee class as arguments
     # Return the result
-    return Report(1, Employee())
+    return report(1, Employee())
 
 # Create a route for a get request
 # Set the route's path to receive a request
