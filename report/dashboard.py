@@ -122,7 +122,7 @@ class LineChart(MatplotlibViz):
         # to inspect the supported keyword arguments
                 
         # Set title and labels for x and y axis
-        self.set_axis_styling(ax, bordercolor ='black', fontsize =16)
+        self.set_axis_styling(ax, bordercolor ='black', fontcolor ='black')
         ax.set_xlabel('Date')
         ax.set_ylabel('Event Count')
 
