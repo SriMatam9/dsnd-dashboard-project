@@ -16,7 +16,7 @@ class QueryMixin:
     # that receives an sql query as a string
     # and returns the query's result
     # as a pandas dataframe
-    def pandas_query(self,sql:str) -> pd.Dataframe:
+    def pandas_query(self,sql:str) -> pd.DataFrame:
         with connect(db_path) as conn:
             return pr.read_sql_query(sql,conn)
 
